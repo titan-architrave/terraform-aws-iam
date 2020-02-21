@@ -62,14 +62,6 @@ output "keybase_password_decrypt_command" {
   value = module.iam_user.keybase_password_decrypt_command
 }
 
-output "keybase_password_pgp_message" {
-  value = module.iam_user.keybase_password_pgp_message
-}
-
 output "keybase_secret_key_decrypt_command" {
   value = module.iam_user.keybase_secret_key_decrypt_command
-}
-
-output "keybase_secret_key_pgp_message" {
-  value = module.iam_user.keybase_secret_key_pgp_message
 }

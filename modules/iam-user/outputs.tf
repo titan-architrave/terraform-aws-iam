@@ -95,36 +95,9 @@ EOF
 
 }
 
-output "keybase_password_pgp_message" {
-  value = <<EOF
------BEGIN PGP MESSAGE-----
-Version: Keybase OpenPGP v2.0.76
-Comment: https://keybase.io/crypto
-
-${element(
-  concat(aws_iam_user_login_profile.this.*.encrypted_password, [""]),
-  0,
-)}
------END PGP MESSAGE-----
-EOF
-
-}
-
 output "keybase_secret_key_decrypt_command" {
   value = <<EOF
 echo "${element(concat(aws_iam_access_key.this.*.encrypted_secret, [""]), 0)}" | base64 --decode | keybase pgp decrypt
-EOF
-
-}
-
-output "keybase_secret_key_pgp_message" {
-  value = <<EOF
------BEGIN PGP MESSAGE-----
-Version: Keybase OpenPGP v2.0.76
-Comment: https://keybase.io/crypto
-
-${element(concat(aws_iam_access_key.this.*.encrypted_secret, [""]), 0)}
------END PGP MESSAGE-----
 EOF
 
 }

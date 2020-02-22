@@ -33,7 +33,6 @@ This module outputs commands and PGP messages which can be decrypted either usin
 | create\_iam\_user\_login\_profile | Whether to create IAM user login profile | `bool` | `true` | no |
 | create\_user | Whether to create the IAM user | `bool` | `true` | no |
 | force\_destroy | When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices. Without force\_destroy a user with non-Terraform-managed access keys and login profile will fail to be destroyed. | `bool` | `false` | no |
-| name | Desired name for the IAM user | `string` | n/a | yes |
 | password\_length | The length of the generated password | `number` | `20` | no |
 | password\_reset\_required | Whether the user should be forced to reset the generated password on first login. | `bool` | `true` | no |
 | path | Desired path for the IAM user | `string` | `"/"` | no |
@@ -43,24 +42,21 @@ This module outputs commands and PGP messages which can be decrypted either usin
 | ssh\_public\_key | The SSH public key. The public key must be encoded in ssh-rsa format or PEM format | `string` | `""` | no |
 | tags | A map of tags to add to all resources. | `map(string)` | `{}` | no |
 | upload\_iam\_user\_ssh\_key | Whether to upload a public ssh key to the IAM user | `bool` | `false` | no |
+| user\_accounts | Desired name for the IAM user | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | keybase\_password\_decrypt\_command | n/a |
-| keybase\_password\_pgp\_message | n/a |
 | keybase\_secret\_key\_decrypt\_command | n/a |
-| keybase\_secret\_key\_pgp\_message | n/a |
 | pgp\_key | PGP key used to encrypt sensitive data for this user (if empty - secrets are not encrypted) |
-| this\_iam\_access\_key\_encrypted\_secret | The encrypted secret, base64 encoded |
 | this\_iam\_access\_key\_id | The access key ID |
 | this\_iam\_access\_key\_key\_fingerprint | The fingerprint of the PGP key used to encrypt the secret |
 | this\_iam\_access\_key\_secret | The access key secret |
 | this\_iam\_access\_key\_ses\_smtp\_password | The secret access key converted into an SES SMTP password |
 | this\_iam\_access\_key\_status | Active or Inactive. Keys are initially active, but can be made inactive by other means. |
 | this\_iam\_user\_arn | The ARN assigned by AWS for this user |
-| this\_iam\_user\_login\_profile\_encrypted\_password | The encrypted password, base64 encoded |
 | this\_iam\_user\_login\_profile\_key\_fingerprint | The fingerprint of the PGP key used to encrypt the password |
 | this\_iam\_user\_name | The user's name |
 | this\_iam\_user\_ssh\_key\_fingerprint | The MD5 message digest of the SSH public key |

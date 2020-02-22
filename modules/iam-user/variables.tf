@@ -16,9 +16,10 @@ variable "create_iam_access_key" {
   default     = true
 }
 
-variable "name" {
+variable "user_accounts" {
   description = "Desired name for the IAM user"
-  type        = string
+  type        = list(string)
+  default     = [""]
 }
 
 variable "path" {

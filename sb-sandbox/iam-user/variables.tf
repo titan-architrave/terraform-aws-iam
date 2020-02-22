@@ -1,4 +1,4 @@
 variable "user_accounts" {
-  type = list(string)
+  type    = list(string)
   default = ["samuel", "pascal", "lili"]
 }
